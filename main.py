@@ -2,14 +2,12 @@ import os
 
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
-import time
-from aioflask import Flask, jsonify, request
+import requests
+from io import BytesIO
 
 import utility
 from detector import *
 from recognizer import *
-
-app = Flask(__name__)
 
 # Global Detector and Recognizer
 args = utility.parse_args()
@@ -17,28 +15,7 @@ text_recognizer = TextRecognizer(args)
 text_detector = TextDetector(args)
 
 
-@app.route("/", methods=["GET"])
-async def index():
-    return jsonify(
-        {
-            "ServiceName": "OCR API",
-            "version": "1.0.0",
-            "Environment": "Development",
-        }
-    )
-
-
-@app.route("/", methods=["POST"])
-async def main():
-    image_file = request.files["image_file"]
-    img = np.array(Image.open(image_file).convert("RGB"))
-
-    response = {
-        "table": None,
-        "message": "OK",
-        "timestamp": int(time.time() * 1000),
-    }
-
+def apply_ocr(img):
     # Detect text regions
     dt_boxes, _ = text_detector(img)
 
@@ -60,16 +37,25 @@ async def main():
     rec_res, _ = text_recognizer(img_list)
 
     # Postprocess
+    total_text = ""
     table = dict()
     for i in range(len(rec_res)):
         table[i] = {
             "text": rec_res[i][0],
         }
+        total_text += rec_res[i][0] + " "
 
-    response["table"] = table
+    total_text = total_text.strip()
+    return total_text
 
-    return jsonify(response)
+
+def main():
+    image_url = "https://i.ibb.co/kQvHGjj/aewrg.png"
+    response = requests.get(image_url)
+    img = np.array(Image.open(BytesIO(response.content)).convert("RGB"))
+    ocr_text = apply_ocr(img)
+    print("Output:", ocr_text)
 
 
 if __name__ == "__main__":
-    app.run(debug=False, host="0.0.0.0", port=8080)
+    main()
