@@ -28,7 +28,9 @@ def init_args():
     # params for text detector
     parser.add_argument("--image_dir", type=str)
     parser.add_argument("--det_algorithm", type=str, default="DB")
-    parser.add_argument("--det_model_dir", type=str, default="./ch_PP-OCRv3_det_infer/")
+    parser.add_argument(
+        "--det_model_dir", type=str, default="./src/deprem_ocr/ch_PP-OCRv3_det_infer/"
+    )
     parser.add_argument("--det_limit_side_len", type=float, default=960)
     parser.add_argument("--det_limit_type", type=str, default="max")
 
@@ -66,12 +68,16 @@ def init_args():
 
     # params for text recognizer
     parser.add_argument("--rec_algorithm", type=str, default="SVTR_LCNet")
-    parser.add_argument("--rec_model_dir", type=str, default="./ch_PP-OCRv3_rec_infer/")
+    parser.add_argument(
+        "--rec_model_dir", type=str, default="./src/deprem_ocr/ch_PP-OCRv3_rec_infer/"
+    )
     parser.add_argument("--rec_image_shape", type=str, default="3, 48, 320")
     parser.add_argument("--rec_batch_num", type=int, default=6)
     parser.add_argument("--max_text_length", type=int, default=25)
     parser.add_argument(
-        "--rec_char_dict_path", type=str, default="./ppocr/ppocr_keys_v1.txt"
+        "--rec_char_dict_path",
+        type=str,
+        default="./src/deprem_ocr/ppocr/ppocr_keys_v1.txt",
     )
     parser.add_argument("--use_space_char", type=str2bool, default=True)
     parser.add_argument("--drop_score", type=float, default=0.5)
