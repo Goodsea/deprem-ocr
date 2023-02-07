@@ -34,10 +34,10 @@ def init_args():
 
     # DB parmas
     parser.add_argument("--det_db_thresh", type=float, default=0.1)
-    parser.add_argument("--det_db_box_thresh", type=float, default=0.6)
-    parser.add_argument("--det_db_unclip_ratio", type=float, default=1.5)
+    parser.add_argument("--det_db_box_thresh", type=float, default=0.1)
+    parser.add_argument("--det_db_unclip_ratio", type=float, default=1.7)
     parser.add_argument("--max_batch_size", type=int, default=10)
-    parser.add_argument("--use_dilation", type=str2bool, default=False)
+    parser.add_argument("--use_dilation", type=str2bool, default=True)
     parser.add_argument("--det_db_score_mode", type=str, default="fast")
 
     # EAST parmas

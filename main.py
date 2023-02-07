@@ -2,6 +2,7 @@ import os
 
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
+import time
 import requests
 from io import BytesIO
 
@@ -54,7 +55,12 @@ def main():
     image_url = "https://i.ibb.co/kQvHGjj/aewrg.png"
     response = requests.get(image_url)
     img = np.array(Image.open(BytesIO(response.content)).convert("RGB"))
-    ocr_text = apply_ocr(img)
+
+    t0 = time.time()
+    epoch = 1
+    for _ in range(epoch):
+        ocr_text = apply_ocr(img)
+    print("Elapsed time:", (time.time() - t0) * 1000 / epoch, "ms")
     print("Output:", ocr_text)
 
 
