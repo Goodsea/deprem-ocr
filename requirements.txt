@@ -10,4 +10,4 @@ Cython
 imgaug
 pyclipper
 uvicorn[standard]
-protobuf==3.20.0
+protobuf==3.20.2
