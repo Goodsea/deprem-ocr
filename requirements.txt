@@ -1,0 +1,13 @@
+flask==2.1.3
+aioflask==0.3.0
+paddlepaddle
+opencv-python
+Pillow
+numpy
+pandas
+imutils
+Cython
+imgaug
+pyclipper
+uvicorn[standard]
+protobuf==3.20.0
