@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="deprem_ocr",
-    version="1.0.2",
+    version="1.0.9",
     author="Kutsal Ozkurt",
     author_email="kutsal_baran@hotmail.com",
     description="Extract texts from images and screenshots",

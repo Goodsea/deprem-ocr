@@ -1,0 +1,9 @@
+include LICENSE
+include *.md
+include src/deprem_ocr/ch_PP-OCRv3_rec_infer/*
+include src/deprem_ocr/ch_PP-OCRv3_det_infer/*
+include src/deprem_ocr/ppocr/ppocr_keys_v1.txt
+include *.ini
+exclude .gitignore
+
+global-exclude *.pyc
