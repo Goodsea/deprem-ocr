@@ -33,6 +33,7 @@ def apply_ocr(img):
     for i in range(len(boxes)):
         x1, y1, x2, y2 = map(int, boxes[i])
         img_list.append(img.copy()[y1:y2, x1:x2])
+    img_list.reverse()
 
     rec_res, _ = text_recognizer(img_list)
 
