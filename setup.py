@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="deprem_ocr",
-    version="1.0.9",
+    version="1.0.18",
     author="Kutsal Ozkurt",
     author_email="kutsal_baran@hotmail.com",
     description="Extract texts from images and screenshots",
@@ -22,5 +22,13 @@ setuptools.setup(
     ],
     package_dir={"": "src"},
     packages=setuptools.find_packages(where="src"),
+    include_package_data=True,
+    package_data={
+        "deprem_ocr": [
+            "deprem_ocr/ch_PP-OCRv3_rec_infer/*",
+            "deprem_ocr/ch_PP-OCRv3_det_infer/*",
+            "deprem_ocr/ppocr/ppocr_keys_v1.txt",
+        ]
+    },
     python_requires=">=3.10",
 )

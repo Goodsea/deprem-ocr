@@ -6,9 +6,9 @@ import time
 import requests
 from io import BytesIO
 
-from src.deprem_ocr import utility
-from src.deprem_ocr.detector import TextDetector
-from src.deprem_ocr.recognizer import TextRecognizer
+from deprem_ocr import utility
+from deprem_ocr.detector import TextDetector
+from deprem_ocr.recognizer import TextRecognizer
 
 __all__ = ["DepremOCR"]
 
