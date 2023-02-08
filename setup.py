@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="deprem_ocr",
-    version="1.0.18",
+    version="1.0.19",
     author="Kutsal Ozkurt",
     author_email="kutsal_baran@hotmail.com",
     description="Extract texts from images and screenshots",
@@ -30,5 +30,5 @@ setuptools.setup(
             "deprem_ocr/ppocr/ppocr_keys_v1.txt",
         ]
     },
-    python_requires=">=3.10",
+    python_requires=">=3.8",
 )
